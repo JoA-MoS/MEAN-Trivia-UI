@@ -1,3 +1,4 @@
+import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -6,12 +7,14 @@ import { AppComponent } from './app.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ModalConfirmComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule
   ],
+  entryComponents: [ModalConfirmComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
