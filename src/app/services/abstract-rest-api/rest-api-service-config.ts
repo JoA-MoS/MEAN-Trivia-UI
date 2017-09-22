@@ -7,5 +7,6 @@ export class RestApiServiceConfig {
         headers?: HttpHeaders
     };
     url: string;
+    idProperty: '_id';
 
 }

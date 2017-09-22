@@ -2,8 +2,6 @@
 import { RestApiServiceConfig } from './rest-api-service-config';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { HttpClient } from '@angular/common/http';
 
 
@@ -57,9 +55,7 @@ export abstract class AbstractRestApiService<T> {
       let notFound = true;
 
       this.dataStore.data.forEach((item, index) => {
-        // can we do this without having to assume we have a field called _id?
-        // possibly add it to thes service config
-        if (item['_id'] === data['_id']) {
+        if (item[this.config.idProperty] === data[this.config.idProperty]) {
           this.dataStore.data[index] = data;
           notFound = false;
         }
@@ -86,7 +82,7 @@ export abstract class AbstractRestApiService<T> {
     this.http.put<T>(`${this.config.url}/${id}`, obj, options).subscribe(data => {
       // if 204 no content we should just update the datastore from the obj
       this.dataStore.data.forEach((t, i) => {
-        if (t['_id'] === data['_id']) {
+        if (t[this.config.idProperty] === data[this.config.idProperty]) {
           this.dataStore.data[i] = data;
         }
       });
@@ -97,7 +93,7 @@ export abstract class AbstractRestApiService<T> {
   delete(id, options = this.config.options) {
     this.http.delete(`${this.config.url}/${id}`, options).subscribe(response => {
       this.dataStore.data.forEach((t, i) => {
-        if (t['_id'] === id) { this.dataStore.data.splice(i, 1); }
+        if (t[this.config.idProperty] === id) { this.dataStore.data.splice(i, 1); }
       });
       this.dataBS.next(Object.assign({}, this.dataStore).data);
     }, error => console.log('Could not delete data.'));
