@@ -2,21 +2,45 @@
 
 <div class="container">
   <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
-    <div class="form-group row">
-      <label for="inputName" class="col-sm-1-12 col-form-label">Title:</label>
-      <div class="col-sm-1-12">
-        <input type="text" class="form-control" formControlName="title">
+
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" id="title" formControlName="title">
+      <div *ngIf="productForm.controls['title'].invalid && (productForm.controls['title'].dirty || productForm.controls['title'].touched)"
+        class=" alert alert-danger ">
+        <div *ngIf="productForm.controls['title'].errors.required">
+          Title is required.
+        </div>
+        <div *ngIf="productForm.controls['title'].errors.minlength">
+          Title must be at least 4 characters long.
+        </div>
       </div>
     </div>
-    <fieldset class="form-group row">
-      <legend class="col-form-legend col-sm-1-12">Group name</legend>
-      <div class="col-sm-1-12">
-        ddsafasf
+
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" class="form-control" formControlName="price" min="0">
+      <div *ngIf="productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)"
+        class=" alert alert-danger ">
+        <div *ngIf="productForm.controls['price'].errors.required">
+          Price is required.
+        </div>
+        <div *ngIf="productForm.controls['price'].errors.min">
+          Price cannot be negative
+        </div>
       </div>
-    </fieldset>
-    <div class="form-group row">
-      <div class="offset-sm-2 col-sm-10">
-        <button type="submit" class="btn btn-primary">Action</button>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">Image Url:</label>
+      <input type="text" class="form-control" formControlName="imageUrl">
+    </div>
+
+    <div class="form-group">
+
+      <div class="float-right">
+        <button type="button" class="btn btn-danger" (click)="onDelete(product)">Delete</button>
+        <button type="submit" class="btn btn-primary" [disabled]="productForm.pristine || !productForm.valid">UPDATE</button>
       </div>
     </div>
   </form>

@@ -1,3 +1,11 @@
-<p>
-  product-display works!
-</p>
+<div class="card">
+  <img class="card-img-top" [src]="product.imageUrl || '/assets/images/placeholder.png'" [alt]="product.Title">
+  <div class="card-body">
+    <h4 class="card-title">{{product.title}}</h4>
+    <p class="card-text">{{product.price | currency:'USD':true }}</p>
+  </div>
+  <div class="card-footer">
+    <a class="btn btn-warning btn-block" [routerLink]="[product._id, 'edit']">EDIT</a>
+    <button type="button" class="btn btn-danger btn-block" (click)="onDelete(product)">Delete</button>
+  </div>
+</div>

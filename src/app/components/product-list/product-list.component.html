@@ -1,2 +1,4 @@
 <h2>Products List</h2>
-<div>This is where the list of products will go</div>
+<div class="card-deck">
+    <app-product-display *ngFor="let product of products$ | async" [product]="product"></app-product-display>
+</div>

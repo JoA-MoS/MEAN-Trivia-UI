@@ -1,3 +1,4 @@
+import { ProductDisplayComponent } from './components/product-display/product-display.component';
 import { ProductCreateComponent } from './components/product-create/product-create.component';
 import { ProductEditComponent } from './components/product-edit/product-edit.component';
 import { ProductListComponent } from './components/product-list/product-list.component';
@@ -16,12 +17,16 @@ const routes: Routes = [
     component: ProductListComponent
   },
   {
-    path: 'prodcuts/:id/edit',
+    path: 'products/:id/edit',
     component: ProductEditComponent
   },
   {
     path: 'products/new',
     component: ProductCreateComponent
+  },
+  {
+    path: 'products/detail',
+    component: ProductDisplayComponent
   },
 ];
 

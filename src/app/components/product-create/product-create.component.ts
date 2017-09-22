@@ -32,4 +32,23 @@ export class ProductCreateComponent implements OnInit {
     });
   }
 
+
+  prepareSaveProduct(): Product {
+    const formModel = this.productForm.value;
+    const saveProduct: Product = {
+      _id: null,
+      title: formModel.title as string,
+      price: formModel.price as number,
+      imageUrl: formModel.imageUrl as string,
+    };
+    console.log(saveProduct);
+    return saveProduct;
+  }
+
+  onSubmit() {
+    this.product = this.prepareSaveProduct();
+    // this.service.create(this.product, () => this.router.navigate(['/products']));
+    this.service.create$(this.product).subscribe(data => this.router.navigate(['/products']));
+  }
+
 }
