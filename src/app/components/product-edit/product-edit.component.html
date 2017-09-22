@@ -1,0 +1,23 @@
+<h2>Edit Product</h2>
+
+<div class="container">
+  <form [formGroup]="productForm" (ngSubmit)="onSubmit()" novalidate>
+    <div class="form-group row">
+      <label for="inputName" class="col-sm-1-12 col-form-label">Title:</label>
+      <div class="col-sm-1-12">
+        <input type="text" class="form-control" formControlName="title">
+      </div>
+    </div>
+    <fieldset class="form-group row">
+      <legend class="col-form-legend col-sm-1-12">Group name</legend>
+      <div class="col-sm-1-12">
+        ddsafasf
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Action</button>
+      </div>
+    </div>
+  </form>
+</div>

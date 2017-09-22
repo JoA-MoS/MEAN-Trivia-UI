@@ -17,3 +17,32 @@ export class ModalConfirmComponent implements OnInit {
   }
 
 }
+
+// ====== Sample Implementation =======
+// deleteQuote() {
+//   const modalRef = this.modalService.open(ModalConfirmComponent);
+
+//   modalRef.componentInstance.title = 'DELETE';
+//   modalRef.componentInstance.message = `Are you sure you want to delete the quote: "${this.quote.quoteText}"`;
+//   modalRef.result.then((data) => {
+//     console.log(data);
+//     if (data) {
+//       this.quotesService.delete(this.quote._id).subscribe(res => console.log(res));
+//       this.onDelete.emit(this.quote);
+//     }
+//   }, (reason) => {
+//     // console.log(reason);
+//   });
+//   //
+// }
+
+
+//   private getDismissReason(reason: any): string {
+//   if (reason === ModalDismissReasons.ESC) {
+//     return 'by pressing ESC';
+//   } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+//     return 'by clicking on a backdrop';
+//   } else {
+//     return `with: ${reason}`;
+//   }
+// }
