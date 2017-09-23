@@ -49,7 +49,7 @@ export class ProductEditComponent implements OnInit {
 
   prepareSaveProduct() {
     const formModel = this.productForm.value;
-    console.log(formModel);
+    // console.log(formModel);
     this.product.title = formModel.title as string;
     this.product.price = formModel.price as number;
     this.product.imageUrl = formModel.imageUrl as string;
@@ -57,7 +57,7 @@ export class ProductEditComponent implements OnInit {
 
   onSubmit() {
     this.prepareSaveProduct();
-    console.log(this.product);
+    // console.log(this.product);
 
     this.service.update(this.product._id, this.product);
     this.router.navigate(['/products']);

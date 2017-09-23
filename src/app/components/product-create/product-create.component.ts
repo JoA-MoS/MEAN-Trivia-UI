@@ -41,7 +41,7 @@ export class ProductCreateComponent implements OnInit {
       price: formModel.price as number,
       imageUrl: formModel.imageUrl as string,
     };
-    console.log(saveProduct);
+    // console.log(saveProduct);
     return saveProduct;
   }
 
