@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://justindietz.com/mean/ppm-api'
+  apiUrl: 'http://justindietz.com/portfolio/mean/ppm-api'
 };
