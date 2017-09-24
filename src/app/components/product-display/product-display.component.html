@@ -1,5 +1,5 @@
 <div class="card">
-  <img class="card-img-top" [src]="product.imageUrl || '/assets/images/placeholder.png'" [alt]="product.Title">
+  <img class="card-img-top" [src]="product.imageUrl || '../../assets/images/placeholder.png'" [alt]="product.Title">
   <div class="card-body">
     <h4 class="card-title">{{product.title}}</h4>
     <p class="card-text">{{product.price | currency:'USD':true }}</p>
