@@ -69,7 +69,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ```
 4. Build your angular application specifying the base url you want to use (if it is at the root of your server you do not need to specify a base ref)
     ```
-    ng build --base-href={{/path/from/root/of/server/}}
+    ng build --prod --base-href {{/path/from/root/of/server/}}
     ```
 ## configure nginx for angular application
 1. open the configuration
@@ -97,8 +97,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ```
 2. Add a location entry for you Angular Aplication (press i to edit the file)
     ```
-     location /mean/ppm-api/ {
-            rewrite ^/mean/ppm-api/(.*)$ /$1 break; # <- needed if you are hosting under another directory unless your app has this in the configuration
+     location /portfolio/mean/ppm-api/ {
+            rewrite ^/portfolio/mean/ppm-api/(.*)$ /$1 break; # <- needed if you are hosting under another directory unless your app somehow figures this out
             proxy_pass http://localhost:8080;
             proxy_http_version 1.1;
             proxy_set_header Upgrade $http_upgrade;
@@ -122,7 +122,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ```
 2. Start you application with pm2
     ```
-    pm2 start index.js
+    pm2 start index.js --name "{{Descriptive Name}}"
     ```
 3. run the following command to help generate another command for you to run
     ```
@@ -136,9 +136,46 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ```
 4. copy the command and enter it into your console
 
+5. check status
+pm2 logs ppm-api [--lines 1000]`
+
+## Install MongoDB and run as service
+
+1. create a new file to run mongodb as a service on startup
+    ```
+    sudo vim /etc/systemd/system/mongodb.service
+    ```
+2. Paste the following into the file save and exit
+    ```
+    [Unit]
+    Description=High-performance, schema-free document-oriented database
+    After=network.target
+
+    [Service]
+    User=mongodb
+    ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
+
+    [Install]
+    WantedBy=multi-user.target
+    ```
+3. Start the service
+    ```
+    sudo systemctl start mongodb
+    ```
+4. Check the status
+    ```
+    sudo systemctl status mongodb
+    ```
+5. If all looks good enable mongodb to start on startup
+    ```
+    sudo systemctl enable mongodb
+    ```
+
+
 
 #### Sources
 https://nodejs.org/en/download/package-manager/#debian-and-ubuntu-based-linux-distributions
 https://yarnpkg.com/lang/en/docs/install/#linux-tab
 https://medium.com/@CristianSitov/delivering-multiple-angular2-apps-with-a-single-nginx-server-at-different-urls-55b42ca4c4ce
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04
+https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-16-04
