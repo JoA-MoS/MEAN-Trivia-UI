@@ -13,12 +13,22 @@ import { ModalConfirmComponent } from './components/modal-confirm/modal-confirm.
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { QuestionCreateComponent } from './components/question-create/question-create.component';
+import { ResultListComponent } from './components/result-list/result-list.component';
+import { ResultDisplayComponent } from './components/result-display/result-display.component';
+import { QuizComponent } from './components/quiz/quiz.component';
+import { QuizQuestionDisplayComponent } from './components/quiz-question-display/quiz-question-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalConfirmComponent,
-    HomePageComponent
+    HomePageComponent,
+    QuestionCreateComponent,
+    ResultListComponent,
+    ResultDisplayComponent,
+    QuizComponent,
+    QuizQuestionDisplayComponent
   ],
   entryComponents: [ModalConfirmComponent],
   imports: [

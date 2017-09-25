@@ -1,0 +1,12 @@
+<div>
+  <li>
+    <p>
+      {{question.questionText}}
+    </p>
+    <div class="btn-group" ngbRadioGroup name="questionAnswer" [(ngModel)]="model">
+      <label ngbButtonLabel *ngfor="let answer of question.answers">
+      <input ngbButton type="radio" [value]="answer.correct"> {{answer.text}}
+    </label>
+    </div>
+  </li>
+</div>

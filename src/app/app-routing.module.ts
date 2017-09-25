@@ -1,3 +1,5 @@
+import { ResultListComponent } from './components/result-list/result-list.component';
+import { QuestionCreateComponent } from './components/question-create/question-create.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,14 +10,14 @@ const routes: Routes = [
     component: HomePageComponent,
     pathMatch: 'full'
   },
-  // {
-  //   path: 'products',
-  //   component: ProductListComponent
-  // },
-  // {
-  //   path: 'products/:id/edit',
-  //   component: ProductEditComponent
-  // },
+  {
+    path: 'questions/new',
+    component: QuestionCreateComponent
+  },
+  {
+    path: 'results',
+    component: ResultListComponent
+  },
   // {
   //   path: 'products/new',
   //   component: ProductCreateComponent

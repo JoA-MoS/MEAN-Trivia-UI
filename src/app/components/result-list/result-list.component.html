@@ -1,0 +1,16 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Score</th>
+      <th>Percentage</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let result of results$ | async">
+      <td scope="row">{{result.userFirstName}}</td>
+      <td>{{result.score}}/3</td>
+      <td>{{result.score/3 | percent}}</td>
+    </tr>
+  </tbody>
+</table>

@@ -1,0 +1,5 @@
+<p>Hi {{userFirstName}}</p>
+<p>Choose an answer for each of the questions and submit the test once done</p>
+<p>Good Luck!</p>
+
+<app-quiz-question-display *ngFor="let question of questions" [question]="question"></app-quiz-question-display>
