@@ -69,7 +69,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ```
 4. Build your angular application specifying the base url you want to use (if it is at the root of your server you do not need to specify a base ref)
     ```
-    ng build --prod --base-href {{/path/from/root/of/server/}}
+    ng build --prod --base-href /portfolio/mean/exam/
     ```
 ## configure nginx for angular application
 1. open the configuration
@@ -122,7 +122,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
     ```
 2. Start you application with pm2
     ```
-    pm2 start index.js --name "{{Descriptive Name}}"
+    pm2 start index.js --name "MEAN-Exam-API"
     ```
 3. run the following command to help generate another command for you to run
     ```
@@ -137,7 +137,9 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 4. copy the command and enter it into your console
 
 5. check status
-pm2 logs ppm-api [--lines 1000]`
+    ```
+    pm2 logs MEAN-Exam-API --lines 1000
+    ```
 
 ## Install MongoDB and run as service
 
