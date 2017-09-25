@@ -21,7 +21,7 @@
 
     <div class="form-group">
       <label for="correctAnswer">Correct Answer:</label>
-      <input type="number" class="form-control" formControlName="correctAnswer" min="0">
+      <input type="text" class="form-control" formControlName="correctAnswer">
       <div *ngIf="questionForm.controls['correctAnswer'].invalid && (questionForm.controls['correctAnswer'].dirty || questionForm.controls['correctAnswer'].touched)"
         class=" alert alert-danger ">
         <div *ngIf="questionForm.controls['correctAnswer'].errors.required">
@@ -32,21 +32,21 @@
 
     <div class="form-group">
       <label for="fakeAnswer1">Fake Answer 1:</label>
-      <input type="number" class="form-control" formControlName="fakeAnswer1" min="0">
+      <input type="text" class="form-control" formControlName="fakeAnswer1">
       <div *ngIf="questionForm.controls['fakeAnswer1'].invalid && (questionForm.controls['fakeAnswer1'].dirty || questionForm.controls['fakeAnswer1'].touched)"
         class=" alert alert-danger ">
         <div *ngIf="questionForm.controls['fakeAnswer1'].errors.required">
-          Correct Answer is required.
+          Fake Answer 1 is required.
         </div>
       </div>
     </div>
     <div class="form-group">
       <label for="fakeAnswer2">Fake Answer 2:</label>
-      <input type="number" class="form-control" formControlName="fakeAnswer2" min="0">
+      <input type="text" class="form-control" formControlName="fakeAnswer2">
       <div *ngIf="questionForm.controls['fakeAnswer2'].invalid && (questionForm.controls['fakeAnswer2'].dirty || questionForm.controls['fakeAnswer2'].touched)"
         class=" alert alert-danger ">
         <div *ngIf="questionForm.controls['fakeAnswer2'].errors.required">
-          Correct Answer is required.
+          Fake Answer 2 is required.
         </div>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="form-group">
 
       <div class="float-right">
-        <button type="button" class="btn btn-warning" (click)="onCancel($event)">Cancel</button>
+        <button type="button" class="btn btn-danger" (click)="onCancel($event)">Cancel</button>
         <button type="submit" class="btn btn-primary" [disabled]="questionForm.pristine || !questionForm.valid">CREATE</button>
       </div>
     </div>

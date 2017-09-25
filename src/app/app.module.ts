@@ -1,7 +1,12 @@
-import { RestApiServiceConfig } from './services/abstract-rest-api/rest-api-service-config';
+import { UserService } from './services/user/user.service';
+import { QuizService } from './services/quiz/questions.service';
+import { QuestionsService } from './services/questions/questions.service';
+import { environment } from './../environments/environment';
+import { RestApiServiceConfig } from './services/rest-api/rest-api-service-config';
+import { ResultsService } from './services/results/results.service';
 // Angular Imports
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injectable } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -18,6 +23,13 @@ import { ResultListComponent } from './components/result-list/result-list.compon
 import { ResultDisplayComponent } from './components/result-display/result-display.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizQuestionDisplayComponent } from './components/quiz-question-display/quiz-question-display.component';
+
+
+@Injectable()
+export class QuizAPIConfig extends RestApiServiceConfig {
+  baseUrl = environment.apiUrl;
+  idProperty = '_id';
+}
 
 @NgModule({
   declarations: [
@@ -39,7 +51,11 @@ import { QuizQuestionDisplayComponent } from './components/quiz-question-display
     ReactiveFormsModule,
     FormsModule,
   ],
-  providers: [RestApiServiceConfig],
+  providers: [ResultsService,
+    QuestionsService,
+    QuizService,
+    UserService,
+    { provide: RestApiServiceConfig, useClass: QuizAPIConfig }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

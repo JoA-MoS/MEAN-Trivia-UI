@@ -1,3 +1,4 @@
+import { Answer } from './../../models/answer';
 import { Question } from './../../models/question';
 import { Component, OnInit, Input } from '@angular/core';
 
@@ -8,9 +9,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class QuizQuestionDisplayComponent implements OnInit {
   @Input() question: Question;
+  public answers: Answer[];
   constructor() { }
 
   ngOnInit() {
+    console.log(this.question);
+    this.answers = this.question.answers;
   }
 
 }

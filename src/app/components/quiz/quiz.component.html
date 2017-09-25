@@ -1,5 +1,24 @@
 <p>Hi {{userFirstName}}</p>
 <p>Choose an answer for each of the questions and submit the test once done</p>
 <p>Good Luck!</p>
+<form #quizForm="ngForm" (ngSubmit)="onSubmit()">
+  <ol>
+    <li *ngFor="let question of quizQuestions; let i = index" style=" margin-bottom: 10px; padding:5px;"> {{question.questionText}}
+      <div style="padding-left:20px;" *ngFor="let answer of question.answers">
+        <label>
+          <input type="radio" name="answer{{i}}" [(ngModel)]="answers[i]" [value]="answer._id"> {{answer.answerText}} 
+        </label>
+      </div>
+    </li>
+  </ol>
+  <div class="form-group">
 
-<app-quiz-question-display *ngFor="let question of questions" [question]="question"></app-quiz-question-display>
+    <div class="float-right">
+      <button type="button" class="btn btn-danger" (click)="onCancel($event)">Cancel</button>
+      <button type="submit" class="btn btn-primary" [disabled]="quizForm.pristine || !quizForm.valid">Submit</button>
+    </div>
+
+  </div>
+</form>
+
+<pre>{{quizForm.value | json}}</pre>

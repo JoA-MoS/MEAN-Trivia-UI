@@ -1,3 +1,4 @@
+import { ResultsService } from './../../services/results/results.service';
 import { Observable } from 'rxjs/Observable';
 import { Result } from './../../models/result';
 import { Component, OnInit } from '@angular/core';

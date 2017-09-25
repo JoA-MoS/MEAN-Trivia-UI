@@ -10,6 +10,6 @@ export class RestApiServiceConfig {
     };
     baseUrl: string;
     // this isn't working for some reason
-    idProperty: '_id';
+    idProperty: string = '_id';
 
 }

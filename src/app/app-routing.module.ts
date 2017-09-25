@@ -1,3 +1,4 @@
+import { QuizComponent } from './components/quiz/quiz.component';
 import { ResultListComponent } from './components/result-list/result-list.component';
 import { QuestionCreateComponent } from './components/question-create/question-create.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
@@ -18,10 +19,10 @@ const routes: Routes = [
     path: 'results',
     component: ResultListComponent
   },
-  // {
-  //   path: 'products/new',
-  //   component: ProductCreateComponent
-  // },
+  {
+    path: 'quiz',
+    component: QuizComponent
+  },
   // {
   //   path: 'products/detail',
   //   component: ProductDisplayComponent
