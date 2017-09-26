@@ -43,7 +43,7 @@ export class QuizService extends RestApiService<Question> {
    * @memberof AbstractRestApiService
    */
   constructor(protected http: HttpClient, protected config: RestApiServiceConfig) {
-    super('questions/quiz', http, config);
+    super('quiz', http, config);
     this.dataStore = { data: [] };
     this.dataBS = <BehaviorSubject<Question[]>>new BehaviorSubject([]);
     this.data$ = this.dataBS.asObservable();

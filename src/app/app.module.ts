@@ -25,6 +25,8 @@ import { ResultDisplayComponent } from './components/result-display/result-displ
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizQuestionDisplayComponent } from './components/quiz-question-display/quiz-question-display.component';
 import { ResultsFilterPipe } from './shared/results-filter.pipe';
+import { NavigationComponent } from './components/navigation/navigation.component';
+import { PlayComponent } from './components/play/play.component';
 
 
 @Injectable()
@@ -44,7 +46,9 @@ export class QuizAPIConfig extends RestApiServiceConfig {
     QuizComponent,
     QuizQuestionDisplayComponent,
     ResultsFilterPipe,
-    OrderByScorePipe
+    OrderByScorePipe,
+    NavigationComponent,
+    PlayComponent
   ],
   entryComponents: [ModalConfirmComponent],
   imports: [

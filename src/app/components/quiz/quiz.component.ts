@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from './../../services/user/user.service';
 import { Result } from './../../models/result';
 import { ResultsService } from './../../services/results/results.service';
@@ -15,31 +16,44 @@ import { Component, OnInit } from '@angular/core';
 export class QuizComponent implements OnInit {
   // quizQuestions$: Observable<Question[]>;
   public quizQuestions: Question[];
-  public answers: string[] = [null, null, null];
-  constructor(private service: QuizService,
+  quizForm: FormGroup;
+
+
+  constructor(private fb: FormBuilder,
+    private service: QuizService,
     private resultService: ResultsService,
     private userService: UserService,
-    private router: Router) { }
+    private router: Router) {
+    this.createForm();
+  }
 
   ngOnInit() {
     this.service.getAll$().subscribe((data) => {
       this.quizQuestions = data;
     });
-    // this.quizQuestions$ = this.service.data$;
-    // this.service.loadAll();
+
   }
 
+  createForm() {
+    this.quizForm = this.fb.group({
+      answer0: ['', Validators.required],
+      answer1: ['', Validators.required],
+      answer2: ['', Validators.required],
+    });
+  }
+
+
   prepareSave(): Result {
-    console.log(this.quizQuestions);
+    const formModel = this.quizForm.value;
     let score = 0;
-    this.answers.forEach((elem, i) => {
+    Object.keys(formModel).forEach((elem, i) => {
       const found = this.quizQuestions[i].answers.find((obj) => {
-        return obj._id === elem;
+        return obj._id === formModel[elem];
       });
+      console.log(found);
       if (found.isCorrect) {
         score += 1;
       }
-
     });
 
     const saveResult: Result = {
@@ -51,9 +65,11 @@ export class QuizComponent implements OnInit {
     return saveResult;
   }
 
+
+
   onSubmit() {
     const result = this.prepareSave();
-    this.resultService.create(result, () => this.router.navigate(['/results']));
+    this.resultService.create(result, () => this.router.navigate(['']));
   }
 
 
