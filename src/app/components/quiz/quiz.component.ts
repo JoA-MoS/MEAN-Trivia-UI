@@ -17,6 +17,7 @@ export class QuizComponent implements OnInit {
   // quizQuestions$: Observable<Question[]>;
   public quizQuestions: Question[];
   quizForm: FormGroup;
+  userFirstName: string;
 
 
   constructor(private fb: FormBuilder,
@@ -25,6 +26,7 @@ export class QuizComponent implements OnInit {
     private userService: UserService,
     private router: Router) {
     this.createForm();
+    this.userFirstName = userService.userFirstName;
   }
 
   ngOnInit() {
