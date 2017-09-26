@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './services/user/user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'app';
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
   }
 
   ngOnInit() {
@@ -22,7 +23,9 @@ export class AppComponent implements OnInit {
   }
 
   doLogout() {
+    console.log('logging out');
     this.userService.logOut();
+    this.router.navigateByUrl('');
   }
 
 }

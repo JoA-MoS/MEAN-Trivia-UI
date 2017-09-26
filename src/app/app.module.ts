@@ -1,3 +1,4 @@
+import { OrderByScorePipe } from './shared/order-by-score.pipe';
 import { UserService } from './services/user/user.service';
 import { QuizService } from './services/quiz/questions.service';
 import { QuestionsService } from './services/questions/questions.service';
@@ -42,7 +43,8 @@ export class QuizAPIConfig extends RestApiServiceConfig {
     ResultDisplayComponent,
     QuizComponent,
     QuizQuestionDisplayComponent,
-    ResultsFilterPipe
+    ResultsFilterPipe,
+    OrderByScorePipe
   ],
   entryComponents: [ModalConfirmComponent],
   imports: [

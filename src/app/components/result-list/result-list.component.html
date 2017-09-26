@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let result of results$ | async | resultsFilter: searchTerm">
+    <tr *ngFor="let result of results$ | async | resultsFilter: searchTerm | orderByScore: 'desc'">
       <td scope="row">{{result.userFirstName}}</td>
       <td>{{result.score}}/3</td>
       <td>{{result.score/3 | percent}}</td>
