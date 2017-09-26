@@ -23,6 +23,7 @@ import { ResultListComponent } from './components/result-list/result-list.compon
 import { ResultDisplayComponent } from './components/result-display/result-display.component';
 import { QuizComponent } from './components/quiz/quiz.component';
 import { QuizQuestionDisplayComponent } from './components/quiz-question-display/quiz-question-display.component';
+import { ResultsFilterPipe } from './shared/results-filter.pipe';
 
 
 @Injectable()
@@ -40,7 +41,8 @@ export class QuizAPIConfig extends RestApiServiceConfig {
     ResultListComponent,
     ResultDisplayComponent,
     QuizComponent,
-    QuizQuestionDisplayComponent
+    QuizQuestionDisplayComponent,
+    ResultsFilterPipe
   ],
   entryComponents: [ModalConfirmComponent],
   imports: [

@@ -15,16 +15,14 @@ export class AppComponent implements OnInit {
     if (!this.userService.loggedIn) {
       const userName = window.prompt('Please enter your name');
       if (userName.trim().length > 0) {
-        this.userService.loggedIn = true;
-        this.userService.userFirstName = userName;
+        this.userService.logIn(userName.trim());
       }
     }
     console.log(this.userService);
   }
 
   doLogout() {
-    this.userService.loggedIn = false;
-    this.userService.userFirstName = '';
+    this.userService.logOut();
   }
 
 }
