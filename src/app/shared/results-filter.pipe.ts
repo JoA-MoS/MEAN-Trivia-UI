@@ -6,13 +6,13 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class ResultsFilterPipe implements PipeTransform {
 
-  transform(items: Result[], arg: string): any {
+  transform(items, arg): any {
     if (arg && arg.length > 0) {
       return items.filter(item => {
         const argNum = Number(arg);
         return item.userFirstName.toUpperCase().includes(arg.toUpperCase()) ||
           item.score === argNum ||
-          item.score / 3 === argNum / 100;
+          ((item.score / 3) * 100).toString().includes((argNum).toString());
       });
     } else {
       return items;

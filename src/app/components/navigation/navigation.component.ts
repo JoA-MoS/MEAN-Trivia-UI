@@ -13,19 +13,23 @@ export class NavigationComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (!this.userService.loggedIn) {
-      const userName = window.prompt('Please enter your name');
-      if (userName.trim().length > 0) {
-        this.userService.logIn(userName.trim());
-      }
-    }
-    console.log(this.userService);
+    // if (!this.userService.loggedIn) {
+    //   let userName = '';
+    //   while (!userName || !userName.trim()) {
+    //     userName = window.prompt('Please enter your name');
+    //   }
+
+    //   this.userService.logIn(userName.trim());
+
+    // }
+    // console.log(this.userService);
   }
+
 
   doLogout() {
     console.log('logging out');
     this.userService.logOut();
-    this.router.navigateByUrl('');
+    this.router.navigate(['']);
   }
 
 }

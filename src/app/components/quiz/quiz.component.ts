@@ -1,3 +1,7 @@
+import { FlashMessage } from './../flash/flash-message';
+import { FlashService } from './../flash/flash.service';
+import { FlashMessageTypes } from './../flash/flash-message-types.enum';
+
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserService } from './../../services/user/user.service';
 import { Result } from './../../models/result';
@@ -7,6 +11,7 @@ import { QuizService } from './../../services/quiz/questions.service';
 import { Observable } from 'rxjs/Observable';
 import { Question } from './../../models/question';
 import { Component, OnInit } from '@angular/core';
+
 
 @Component({
   selector: 'app-quiz',
@@ -24,6 +29,7 @@ export class QuizComponent implements OnInit {
     private service: QuizService,
     private resultService: ResultsService,
     private userService: UserService,
+    private flashService: FlashService,
     private router: Router) {
     this.createForm();
     this.userFirstName = userService.userFirstName;
@@ -64,14 +70,27 @@ export class QuizComponent implements OnInit {
       score: score,
     };
     // console.log(saveQuestion);
+
+
     return saveResult;
   }
 
 
 
   onSubmit() {
-    const result = this.prepareSave();
-    this.resultService.create(result, () => this.router.navigate(['']));
+    if (this.quizForm.valid) {
+      const result = this.prepareSave();
+      this.flashService.addMessage(
+        // tslint:disable-next-line:max-line-length
+        new FlashMessage(`That was great, ${this.userFirstName}! Your score is ${result.score}/3 ( ${Math.round((result.score / 3) * 100000) / 1000}%) `,
+          FlashMessageTypes.success));
+      this.resultService.create(result, () => {
+        this.router.navigate(['']);
+      });
+    } else {
+      console.log('invalid');
+      this.flashService.addMessage(new FlashMessage('All questions must be answered', FlashMessageTypes.danger), true);
+    }
   }
 
 

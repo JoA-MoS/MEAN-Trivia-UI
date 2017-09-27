@@ -27,10 +27,12 @@ export class UserService {
   }
 
   logOut() {
+    localStorage.clear();
     this._loggedIn = false;
     this._userFirstName = '';
-    localStorage.setItem('loggedIn', JSON.stringify(this._loggedIn));
-    localStorage.setItem('userFirstName', JSON.stringify(this._userFirstName));
+    // localStorage.setItem('loggedIn', JSON.stringify(this._loggedIn));
+    // localStorage.setItem('userFirstName', JSON.stringify(this._userFirstName));
+
   }
 
 }

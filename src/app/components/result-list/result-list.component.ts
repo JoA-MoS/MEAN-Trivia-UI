@@ -16,8 +16,6 @@ export class ResultListComponent implements OnInit {
   searchTerm: string;
 
   constructor(private service: ResultsService,
-    // private resultSearchService: ResultsSearchService,
-
     private router: Router) { }
 
   ngOnInit() {

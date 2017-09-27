@@ -14,10 +14,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (!this.userService.loggedIn) {
-      const userName = window.prompt('Please enter your name');
-      if (userName.trim().length > 0) {
-        this.userService.logIn(userName.trim());
+      let userName = '';
+      while (!userName || !userName.trim()) {
+        userName = window.prompt('Please enter your name');
       }
+
+      this.userService.logIn(userName.trim());
+
     }
     console.log(this.userService);
   }

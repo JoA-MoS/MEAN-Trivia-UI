@@ -1,3 +1,4 @@
+import { FlashService } from './components/flash/flash.service';
 import { OrderByScorePipe } from './shared/order-by-score.pipe';
 import { UserService } from './services/user/user.service';
 import { QuizService } from './services/quiz/questions.service';
@@ -21,12 +22,12 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { QuestionCreateComponent } from './components/question-create/question-create.component';
 import { ResultListComponent } from './components/result-list/result-list.component';
-import { ResultDisplayComponent } from './components/result-display/result-display.component';
 import { QuizComponent } from './components/quiz/quiz.component';
-import { QuizQuestionDisplayComponent } from './components/quiz-question-display/quiz-question-display.component';
 import { ResultsFilterPipe } from './shared/results-filter.pipe';
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { PlayComponent } from './components/play/play.component';
+import { FlashComponent } from './components/flash/flash.component';
+import { FilterByTypePipe } from './components/flash/filter-by-type.pipe';
 
 
 @Injectable()
@@ -42,13 +43,13 @@ export class QuizAPIConfig extends RestApiServiceConfig {
     HomePageComponent,
     QuestionCreateComponent,
     ResultListComponent,
-    ResultDisplayComponent,
     QuizComponent,
-    QuizQuestionDisplayComponent,
     ResultsFilterPipe,
     OrderByScorePipe,
     NavigationComponent,
-    PlayComponent
+    PlayComponent,
+    FlashComponent,
+    FilterByTypePipe
   ],
   entryComponents: [ModalConfirmComponent],
   imports: [
@@ -63,6 +64,7 @@ export class QuizAPIConfig extends RestApiServiceConfig {
     QuestionsService,
     QuizService,
     UserService,
+    FlashService,
     { provide: RestApiServiceConfig, useClass: QuizAPIConfig }],
   bootstrap: [AppComponent]
 })

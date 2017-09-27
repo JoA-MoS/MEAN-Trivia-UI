@@ -41,7 +41,8 @@ export class ResultsService extends RestApiService<Result> {
    * @param {RestApiServiceConfig} config
    * @memberof AbstractRestApiService
    */
-  constructor(protected http: HttpClient, protected config: RestApiServiceConfig) {
+  constructor(protected http: HttpClient,
+    protected config: RestApiServiceConfig) {
     super('results', http, config);
     this.dataStore = { data: [] };
     this.dataBS = <BehaviorSubject<Result[]>>new BehaviorSubject([]);
