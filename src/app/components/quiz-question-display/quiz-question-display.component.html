@@ -1,8 +1,0 @@
-<li style=" margin-bottom: 10px; padding:5px;"> {{question.questionText}}
-
-  <div style="padding-left:20px;" *ngFor="let answer of question.answers">
-    <label>
-        <input type="radio" [value]="answer.isCorrect"> {{answer.answerText}}
-      </label>
-  </div>
-</li>
