@@ -1,0 +1,7 @@
+<ng-container *ngIf="messages && messages.length>0">
+  <!-- <ng-container *ngFor="let type of keys(); let i=index"> -->
+  <ngb-alert *ngFor="let msg of messages" class="flash" type="{{msg.style}}" [dismissible]="false">
+    <ng-container>{{msg.message}}</ng-container>
+  </ngb-alert>
+</ng-container>
+<!-- </ng-container> -->
